@@ -7,8 +7,8 @@ scramv1 project -n CMSSW_5_3_11_DP CMSSW CMSSW_5_3_11
 
 cd CMSSW_5_3_11_DP/src/ 
 
-git clone git@github.com:sigamani/EXOTICA.git
+git clone git@github.com:sigamani/EXO.git
 
-cd EXOTICA
+cd EXO
 
 tar -xvf RecoMET.tar 
