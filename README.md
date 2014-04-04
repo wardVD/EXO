@@ -1,4 +1,6 @@
 EXO-DisplacedPhotons
 ====================
 
-Displaced photons package 
+Displaced photons package
+
+tar -xvf RecoMET.tar 
