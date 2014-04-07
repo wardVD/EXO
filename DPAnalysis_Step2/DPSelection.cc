@@ -167,10 +167,10 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
    h000->GetXaxis()->SetBinLabel(3,"OneGoodVtx");
    h000->GetXaxis()->SetBinLabel(4,"MET>0");
    h000->GetXaxis()->SetBinLabel(5,"nPhot1");
-   //h000->GetXaxis()->SetBinLabel(6,"ptPhot[0]80");
-   h000->GetXaxis()->SetBinLabel(6,"nJet2");
-   //h000->GetXaxis()->SetBinLabel(8,"ptJet[0]80");
-   //h000->GetXaxis()->SetBinLabel(9,"ptJet[1]50");
+   h000->GetXaxis()->SetBinLabel(6,"ptPhot[0]80");
+   h000->GetXaxis()->SetBinLabel(7,"nJet2");
+   h000->GetXaxis()->SetBinLabel(8,"ptJet[0]80");
+   h000->GetXaxis()->SetBinLabel(9,"ptJet[1]50");
 
    h000->Fill(0.,entries);
    
@@ -306,6 +306,7 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
      
      for (int i=0; i < nConversions; i++) {
 
+       /*
        if (convMatchedEle[i] > 0) continue;
        
        bool matching = false;
@@ -325,7 +326,8 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
        }
 
        if (!matching) continue;
-       
+       */
+
        dzConv.push_back(convDz[i]);
        dxyConv.push_back(convDxy[i]);
        phiConv.push_back(convPhi[i]);
@@ -475,10 +477,10 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
      if (nGoodVtx < 0) continue; 	h000->Fill(2.);
      if (MET < 30) continue; 	        h000->Fill(3.);
      if (nPhot < 1) continue;  	        h000->Fill(4.);
-     //if (ptPhot[0] < 80.) continue; 	h000->Fill(5.);  WAS WEG
+     if (ptPhot[0] < 80.) continue; 	h000->Fill(5.);  //WAS WEG
      if (nJet < 2) continue; 	        h000->Fill(5.);
-     //if (ptJet[0] < 80.) continue; 	h000->Fill(7.);  WAS WEG
-     //if (ptJet[1] < 50.) continue; 	h000->Fill(8.);  WAS WEG
+     if (ptJet[0] < 80.) continue; 	h000->Fill(7.);  //WAS WEG
+     if (ptJet[1] < 50.) continue; 	h000->Fill(8.);  //WAS WEG
 	  
      anaTree->Fill();
 
