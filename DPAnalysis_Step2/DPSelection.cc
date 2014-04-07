@@ -30,7 +30,7 @@ using std::vector;
 using std::cout; using std::endl;
 
 
-// test
+// testWVD
 
 //===== constructor  ====
 DPSelection::DPSelection(TTree *tree): GMSBTree_V3(tree) { 
