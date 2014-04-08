@@ -49,7 +49,7 @@
 
   mergeFiles("../DPAnalysis/test/v21/QCD_Pt-800to1000.root","/pnfs/iihe/cms/store/user/sigamani/Summer12/v21/QCD_Pt-800to1000/");
 
-  mergeFiles("../DPAnalysis/test/v21/QCD_Pt-1000to1400.root","/pnfs/iihe/cms/store/user/sigamani/Summer12/v21/QCD_Pt-1000to14000/");
+  mergeFiles("../DPAnalysis/test/v21/QCD_Pt-1000to1400.root","/pnfs/iihe/cms/store/user/sigamani/Summer12/v21/QCD_Pt-1000to1400/");
 
    
 
