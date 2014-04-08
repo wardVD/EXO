@@ -30,11 +30,6 @@ using std::vector;
 using std::cout; using std::endl;
 
 
-// testWVD
-// Another test of shizzle
-
-
-//<3sigamani<3
 
 
 //===== constructor  ====
@@ -115,11 +110,14 @@ double weightCrossSection(const char* outname) {
 
 int getsumcounterzero(TString infile){
 
-	  TString dir = "/localgrid/wvandrie/CMSSW_5_3_11_DP/src/EXO/DPAnalysis/test/v21/";
-          TFile f(dir+infile+".root");
-          TTree* ftree= (TTree*)f.Get("CutFlow");
+	  //TString dir = "/localgrid/wvandrie/CMSSW_5_3_11_DP/src/EXO/DPAnalysis/test/v21/";
+          //TFile f(dir+infile+".root");
 
+	  TString dir = "root://eoscms//eos/cms/store/caf/user/sigamani/DPAnalysis/v21/"; 
+          TFile *f = TFile::Open(dir+infile+".root");
 
+          TTree* ftree= (TTree*)f->Get("CutFlow");
+      
           TH1D* hist = new TH1D("hist","",150000,0,150000);
 
           ftree->Draw("counter[0]>>hist");
@@ -477,10 +475,10 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
      if (nGoodVtx < 0) continue; 	h000->Fill(2.);
      if (MET < 30) continue; 	        h000->Fill(3.);
      if (nPhot < 1) continue;  	        h000->Fill(4.);
-     if (ptPhot[0] < 80.) continue; 	h000->Fill(5.);  //WAS WEG
+//     if (ptPhot[0] < 80.) continue; 	h000->Fill(5.);  //WAS WEG
      if (nJet < 2) continue; 	        h000->Fill(5.);
-     if (ptJet[0] < 80.) continue; 	h000->Fill(7.);  //WAS WEG
-     if (ptJet[1] < 50.) continue; 	h000->Fill(8.);  //WAS WEG
+//     if (ptJet[0] < 80.) continue; 	h000->Fill(7.);  //WAS WEG
+//     if (ptJet[1] < 50.) continue; 	h000->Fill(8.);  //WAS WEG
 	  
      anaTree->Fill();
 

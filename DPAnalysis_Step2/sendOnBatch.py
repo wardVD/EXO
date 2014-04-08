@@ -50,7 +50,7 @@ while (len(inputfiles) > 0):
 
     outputname = dir+"/src/"+dataset_name+"_"+str(ijob)+".src"
     outputfile = open(outputname,'w')
-#    outputfile.write('#!/bin/bash\n')
+    outputfile.write('#!/bin/bash\n')
     outputfile.write('source $VO_CMS_SW_DIR/cmsset_default.sh\n')
     outputfile.write('export SCRAM_ARCH=slc5_amd64_gcc462\n')
     outputfile.write('cd '+pwd[0:]+'; eval `scramv1 runtime -sh`; \n')
