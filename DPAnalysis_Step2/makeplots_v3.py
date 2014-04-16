@@ -20,7 +20,7 @@ def loop(vec, vechisto, flag, phot):
 #            if (event.ptJet[1] < 30):
 #                continue
             if(flag == 0):
-                lum = 8430.
+                lum = 19280.
                 vechisto[0].Fill( event.ptPhot[0], (event.CrossSectionWeight*lum)/(event.EfficiencyScaleFactors) )
                 if (event.ptPhot.size() > phot):
                     vechisto[1].Fill( event.ptPhot[1], (event.CrossSectionWeight*lum)/(event.EfficiencyScaleFactors) )
@@ -61,10 +61,10 @@ def loop(vec, vechisto, flag, phot):
 def function (lamb,ctau,phot):
 
     listgpt = ["./v21/G_Pt-50to80.root","./v21/G_Pt-80to120.root","./v21/G_Pt-120to170.root","./v21/G_Pt-170to300.root","./v21/G_Pt-300to470.root","./v21/G_Pt-470to800.root"]
-    listqcd = ["./v21/QCD_Pt-80to120.root","./v21/QCD_Pt-120to170.root","./v21/QCD_Pt-170to300.root","./v21/QCD_Pt-470to600.root","./v21/QCD_Pt-600to800.root","./v21/QCD_Pt-800to1000.root"]
+    listqcd = ["./v21/QCD_Pt-80to120.root","./v21/QCD_Pt-120to170.root","./v21/QCD_Pt-170to300.root","./v21/QCD_Pt-470to600.root","./v21/QCD_Pt-600to800.root","./v21/QCD_Pt-800to1000.root","./v21/QCD_Pt-1000to1400.root"]
     listttjets = ["./v21/TTJets.root"]
     listsig = ["./v21/GMSB_L"+lamb+"-CTAU"+ctau+".root"]
-    listdata = ["./v21/Run2012C.root","./v21/Run2012D.root"]
+    listdata = ["./v21/Run2012A.root","./v21/Run2012B.root","./v21/Run2012C_1.root","./v21/Run2012C_2.root","./v21/Run2012C_3.root","./v21/Run2012D_1.root","./v21/Run2012D_2.root","./v21/Run2012D_3.root"]
     
     vecfilesgpt = []
     for item in listgpt:
@@ -91,7 +91,7 @@ def function (lamb,ctau,phot):
     ptphosubleadgpt = TH1D("PtPhotonsubleadingGPT","",12,0,500)
     ptjetleadgpt = TH1D("PtJetleadingGPT","",12,0,500)
     ptjetsubleadgpt = TH1D("PtJetsubleadingGPT","",12,0,500)
-    dxygpt = TH1D("DxyGPT","",25,0,2.5)
+    dxygpt = TH1D("DxyGPT","",50,0,2.5)
     metgpt = TH1D("METGPT","",50,0,1000)
     njetsgpt = TH1D("nJetsGPT","",15,0,15)
     nphotgpt = TH1D("nPhotGPT","",15,0,15)
@@ -107,7 +107,7 @@ def function (lamb,ctau,phot):
     ptphosubleadqcd = TH1D("PtPhotonsubleadingQCD","",12,0,500)
     ptjetleadqcd = TH1D("PtJetleadingQCD","",12,0,500)
     ptjetsubleadqcd = TH1D("PtJetsubleadingQCD","",12,0,500)
-    dxyqcd = TH1D("DxyQCD","",25,0,2.5)
+    dxyqcd = TH1D("DxyQCD","",50,0,2.5)
     metqcd = TH1D("METQCD","",50,0,1000)
     njetsqcd = TH1D("nJetsQCD","",15,0,15)
     nphotqcd = TH1D("nPhotQCD","",15,0,15)
@@ -123,7 +123,7 @@ def function (lamb,ctau,phot):
     ptphosubleadttjet = TH1D("PtPhotonsubleadingTTJet","",12,0,500)
     ptjetleadttjet = TH1D("PtJetleadingTTJet","",12,0,500)
     ptjetsubleadttjet = TH1D("PtJetsubleadingTTJet","",12,0,500)
-    dxyttjet = TH1D("DxyTTJet","",25,0,2.5)
+    dxyttjet = TH1D("DxyTTJet","",50,0,2.5)
     metttjet = TH1D("METTTJet","",50,0,1000)
     njetsttjet = TH1D("nJetsTTJet","",15,0,15)
     nphotttjet = TH1D("nPhotTTJet","",15,0,15)
@@ -139,7 +139,7 @@ def function (lamb,ctau,phot):
     ptphosubleadsig = TH1D("PtPhotonsubleadingSignal","",12,0,500)
     ptjetleadsig = TH1D("PtJetleadingSignal","",12,0,500)
     ptjetsubleadsig = TH1D("PtJetsubleadingSignal","",12,0,500)
-    dxysig = TH1D("DxySignal","",25,0,2.5)
+    dxysig = TH1D("DxySignal","",50,0,2.5)
     metsig = TH1D("METSignal","",50,0,1000)
     njetssig = TH1D("nJetsSignal","",15,0,15)
     nphotsig = TH1D("nPhotSignal","",15,0,15)
@@ -155,7 +155,7 @@ def function (lamb,ctau,phot):
     ptphosublead = TH1D("PtPhotonsubleading","",12,0,500)
     ptjetlead = TH1D("PtJetleading","",12,0,500)
     ptjetsublead = TH1D("PtJetsubleading","",12,0,500)
-    dxy = TH1D("Dxy","",25,0,2.5)
+    dxy = TH1D("Dxy","",50,0,2.5)
     met = TH1D("MET","",50,0,1000)
     njets = TH1D("nJets","",15,0,15)
     nphot = TH1D("nPhot","",15,0,15)
@@ -188,8 +188,8 @@ def function (lamb,ctau,phot):
 
 
 def main():
-    function("180","500",1)
-    function("180","500",2)
+    function("180","50",1)
+    function("180","50",2)
 
 if __name__ == "__main__":
     main()

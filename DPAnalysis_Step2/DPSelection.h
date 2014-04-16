@@ -47,7 +47,7 @@ private:
     std::vector<double> dzConv;
     std::vector<double> etaConv;
     std::vector<double> phiConv;
-    std::vector<double> deltaR;
+    std::vector<double> deltaRward;
     std::vector<double> convMatched;
     std::vector<double> phoMatched;
 
