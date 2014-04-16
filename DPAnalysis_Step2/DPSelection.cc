@@ -110,13 +110,13 @@ double weightCrossSection(const char* outname) {
 
 int getsumcounterzero(TString infile){
 
-	  //TString dir = "/localgrid/wvandrie/CMSSW_5_3_11_DP/src/EXO/DPAnalysis/test/v21/";
-          //TFile f(dir+infile+".root");
+	  TString dir = "/localgrid/wvandrie/CMSSW_5_3_11_DP/src/EXO/DPAnalysis/test/v21/";
+          TFile f(dir+infile+".root");
 
-	  TString dir = "root://eoscms//eos/cms/store/caf/user/sigamani/DPAnalysis/v21/"; 
-          TFile *f = TFile::Open(dir+infile+".root");
+	  //TString dir = "root://eoscms//eos/cms/store/caf/user/sigamani/DPAnalysis/v21/"; 
+          //TFile *f = TFile::Open(dir+infile+".root");
 
-          TTree* ftree= (TTree*)f->Get("CutFlow");
+          TTree* ftree= (TTree*)f.Get("CutFlow");
       
           TH1D* hist = new TH1D("hist","",150000,0,150000);
 
@@ -197,7 +197,7 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
    anaTree->Branch("dzConv", &dzConv);
    anaTree->Branch("etaConv", &etaConv);
    anaTree->Branch("phiConv", &phiConv);
-   anaTree->Branch("deltaR", &deltaR);
+   anaTree->Branch("deltaRward", &deltaRward);
    anaTree->Branch("sMinPhot", &sMinPhot);
    anaTree->Branch("sMajPhot", &sMajPhot);
    anaTree->Branch("sigmaIetaPhot", &sigmaIetaPhot);
@@ -273,7 +273,7 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
      dzConv.clear();
      phiConv.clear();
      etaConv.clear();
-     deltaR.clear();
+     deltaRward.clear();
      sMinPhot.clear();
      sMajPhot.clear();
      sigmaIetaPhot.clear(); 
@@ -301,7 +301,7 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
      
      for (int i=0; i < nConversions; i++) {
 
-       /*
+       
        if (convMatchedEle[i] > 0) continue;
        
        bool matching = false;
@@ -314,14 +314,14 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
 
          deltar = sqrt((photonEta-convEta[i])*(photonEta-convEta[i]) + (photonPhi-convPhi[i])*(photonPhi-convPhi[i]));
 
-         deltaR.push_back(deltar);
+         deltaRward.push_back(deltar);
 
-         if (deltar < 0.25) {matching = true;}
+         //if (deltar < 0.25) {matching = true;}
 
        }
 
-       if (!matching) continue;
-       */
+       //if (!matching) continue;
+       
 
        dzConv.push_back(convDz[i]);
        dxyConv.push_back(convDxy[i]);
@@ -388,7 +388,7 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
        if (!( cHadIso[i] >= 2.6 )  && (!( nHadIso[i] >= 3.5 + ( 0.04*phoP4.Pt()   ) )) && (!( photIso[i] >= 1.3 + ( 0.005*phoP4.Pt() ) ))  ) continue ;
        */
 
-       //if (phoMatchedEle[i] > 0) continue;
+       if (phoMatchedEle[i] > 0) continue;
        
        ptPhot.push_back(phoP4.Pt());
        sort(ptPhot.begin(),ptPhot.end(),comp_pair);
