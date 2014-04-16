@@ -1,15 +1,15 @@
 {
 #include "merge.C";
 
-/*
+
   mergeFiles("../DPAnalysis/test/v21/Run2012A.root","/pnfs/iihe/cms/store/user/sigamani/DATA/v21/Run2012A/");
  
-  mergeFiles("../DPAnalysis/test/v21/Run2012B.root","/pnfs/iihe/cms/store/user/sigamani/DATA/v21/Run2012B/");
+  mergeFiles("../DPAnalysis/test/v21/Run2012B.root","/pnfs/iihe/cms/store/user/sigamani/DATA/v21/Run2012B_New/");
 
   mergeFiles("../DPAnalysis/test/v21/Run2012D.root","/pnfs/iihe/cms/store/user/sigamani/DATA/v21/Run2012D/");
 
   mergeFiles("../DPAnalysis/test/v21/Run2012C.root","/pnfs/iihe/cms/store/user/sigamani/DATA/v21/Run2012C/");
-*/
+
 
   
   mergeFiles("../DPAnalysis/test/v21/GMSB_L180-CTAU10.root","/pnfs/iihe/cms/store/user/sigamani/Summer12/v21/GMSB_Lambda-180_CTau-10/");
@@ -55,5 +55,5 @@
    
 
   mergeFiles("../DPAnalysis/test/v21/TTJets.root","/pnfs/iihe/cms/store/user/sigamani/Summer12/v21/TTJets_FullLept/");
-  
+    
 }

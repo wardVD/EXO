@@ -300,7 +300,6 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
      double largesttempphi = 0.;
      
      for (int i=0; i < nConversions; i++) {
-
        
        if (convMatchedEle[i] > 0) continue;
        
@@ -311,6 +310,12 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
          TLorentzVector phoP4( phoPx[k], phoPy[k], phoPz[k], phoE[k] );
          double photonEta = phoP4.Eta();
          double photonPhi = phoP4.Phi();
+	 if (photonPhi > pi){
+	   photonPhi -= 2.*pi;
+	 }
+	 if (photonPhi < -pi){
+	   photonPhi += 2.*pi;
+	 }
 
          deltar = sqrt((photonEta-convEta[i])*(photonEta-convEta[i]) + (photonPhi-convPhi[i])*(photonPhi-convPhi[i]));
 
@@ -324,7 +329,8 @@ void DPSelection::Loop(int nMaxEvents, const char* outname)
        
 
        dzConv.push_back(convDz[i]);
-       dxyConv.push_back(convDxy[i]);
+       //dxyConv.push_back(convDxy[i]);
+       dxyConv.push_back(convChi2[i]*convDxy[i]);
        phiConv.push_back(convPhi[i]);
        etaConv.push_back(convEta[i]);
 
